@@ -51,6 +51,18 @@ $('.collection-slider').slick({
     variableWidth: true
   });
 
+
+  $('.product-slider').slick({
+    dots: true,
+    infinite: true,
+    arrows:true,
+    speed: 300,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    slidesToShow: 1
+  });
+
+
 $("#click").click(function(){
     $(".search-form").toggleClass("add")
     $(".search-form").slideToggle();
@@ -73,41 +85,20 @@ $('.ourwork-tab').easyResponsiveTabs({
 $("a.fancybox").fancybox();
 
 
+$('.click').click(function(){ 
+    if($(this).closest('li').hasClass("current")){
+         $(this).closest('li').removeClass("current")
+         $(".color-comb ul li").removeClass("current");
+    } 
+    else{
+     $(".color-comb ul li").removeClass("current");
+     $(this).closest('li').addClass("current")
+     
+    }
+ 
+ });
+
+
+
 });
 
-
-var productDetail = new Vue({
-    el: "#app",
-    data: {
-      productTitle: "Cobi Coffe table",
-      productPrice: "$140.00",
-      productChecks: [
-        "100% Wooden",
-        "certified and safe",
-        "Good quality"
-      ],
-      bannerImage: "images/product03.jpg",
-      productImages: [
-        {
-          id: 3435,
-          imageUrl: "images/product03.jpg"
-        },
-        {
-          id: 3436,
-          imageUrl: "images/product01.jpg"
-        }
-      ],
-      cart: 0,
-      stockAvailability: true,
-      activeClass: 0
-    },
-    methods: {
-      addToCart: function () {
-        this.cart = this.cart + 1;
-      },
-      currentThumnail: function (image, index) {
-        this.bannerImage = image;
-        this.activeClass = index;
-      }
-    }
-  });
